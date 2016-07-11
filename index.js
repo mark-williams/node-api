@@ -1,6 +1,10 @@
-var express = require('express');
-const app = express();
 const port = 7200;
+
+var express = require('express');
+var rescue = require('./rescue');
+
+const app = express();
+rescue(app);
 
 app.get('/ping', (req, res) => {
     res.send('pong');
