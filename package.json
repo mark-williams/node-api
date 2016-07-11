@@ -1,0 +1,20 @@
+{
+  "name": "node-api",
+  "version": "1.0.0",
+  "description": "Simple evaluation/investigation of a REST api using node/express.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "api",
+    "rest"
+  ],
+  "author": "Mark Williams",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
