@@ -13,4 +13,4 @@ PUT (amends a record) and DELETE methods added.
 
 
 #### Break out repository
-Brokemn out repository concerns into a separate module, this will hopefully aid testing.
+Broken out repository concerns into a separate module, this will hopefully aid testing.
