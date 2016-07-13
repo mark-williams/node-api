@@ -1,3 +1,4 @@
+'use strict';
 const port = 7200;
 
 var express = require('express');

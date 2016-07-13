@@ -1,36 +1,50 @@
-var _ = require('underscore');
+'use strict';
+var repository = require('./repository')();
 
-const dogs = [
-    { id: 1, name: 'Bert' },
-    { id: 2, name: 'Missy' },
-    { id: 3, name: 'Rosy' },
-    { id: 4, name: 'Buster' }
-];
+const parseRequestParams = (req) => {
+    return { id: parseInt(req.params.id) };
+}
 
 const rescue = (app) => {
 
     app.get('/dogs', (req, res) => {
-        res.send(dogs);
+        repository.getAll((results) => {
+            res.send(results);
+        });
     });
 
     app.get('/dogs/:id', (req, res) => {
-        var dogId = parseInt(req.params.id);
-        var dog = _.find(dogs, (dog) => {
-            return (dog.id === dogId);
+        var params = parseRequestParams(req);
+        repository.getById(params.id, (result) => {
+            if (result) {    
+             res.send(result);
+            }
+            else {
+                res.status(404).send('Not found');
+            }
         });
-
-        res.send(dog);
+       
     });
-
 
     app.post('/dogs', (req, res) => {
-        var newId = dogs.length + 1;
-        req.body.id = newId;
-        dogs.push(req.body);
-
-        res.send(dogs);
+        repository.create(req.body, (result) => {
+            res.send(result);
+        });
     });
 
+    app.put('/dogs', (req, res) => {
+        repository.update(req.body, (result) => {
+            res.send(req.body);
+        });
+    });
+
+    app.delete('/dogs/:id', (req, res) => {
+        var params = parseRequestParams(req);
+             
+        repository.delete(params.id, (result) => {
+            return res.send(result);
+        });
+    });
 
 };
 
