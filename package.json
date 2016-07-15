@@ -4,7 +4,7 @@
   "description": "Simple evaluation/investigation of a REST api using node/express.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --compilers js:babel-core/register"
   },
   "keywords": [
     "node",
@@ -19,5 +19,12 @@
     "express": "^4.14.0",
     "lodash": "^4.13.1",
     "mongoose": "^4.5.4"
+  },
+  "devDependencies": {
+    "babel-core": "^6.10.4",
+    "babel-preset-es2015": "^6.9.0",
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3",
+    "sinon": "^1.17.4"
   }
 }
