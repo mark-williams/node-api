@@ -3,25 +3,13 @@ var mongoose = require('mongoose');
 var Pet = require('./pets.model');
 var _ = require('lodash');
 
-const getById = (id) => {
-    return _.find(dogs, (dog) => { return dog.id === id });
-};
-
-const getMaxId = () => {
-    var ids = dogs.map((item) => {
-        return typeof item.petId === 'undefined' ? 0 : item.petId;
-    });
-
-    return _.max(ids);
-};
-
 const repository = () => {
 
     mongoose.connect('mongodb://will:border@ds017175.mlab.com:17175/rescue');
 
     return {
         getAll: (cb) => {
-            Pet.find(cb);
+            Pet.find({ animal: 'dog' }, cb);
         },
         getById: (id, cb) => {
             Pet.findById(id, cb)
