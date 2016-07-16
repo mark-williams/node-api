@@ -29,14 +29,15 @@ const repository = () => {
         create: (item, cb) => {
             var petSpec = {
                 name: item.name,
-                animal: 'dog',
+                animal: item.animal,
                 description: item.description,
                 dateOfBirth: item.dateOfBirth
             };
             var newPet = new Pet(petSpec);
             newPet.save((err) => {
                 if (err) {
-                    cb('Error saving [' + err + ']');
+                    cb('Error creating [' + err + ']');
+                    return;
                 }
 
                 cb(newPet);
