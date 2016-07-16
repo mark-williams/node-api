@@ -1,21 +1,21 @@
 'use strict';
-var repository = require('./repository')();
+var repository = require('./repository/repository')();
 
 const parseRequestParams = (req) => {
-    return { id: parseInt(req.params.id) };
+    return { id: req.params.id };
 }
 
 const rescue = (app) => {
 
     app.get('/dogs', (req, res) => {
-        repository.getAll((results) => {
+        repository.getAll((err, results) => {
             res.send(results);
         });
     });
 
     app.get('/dogs/:id', (req, res) => {
         var params = parseRequestParams(req);
-        repository.getById(params.id, (result) => {
+        repository.getById(params.id, (err, result) => {
             if (result) {    
              res.send(result);
             }
