@@ -16,4 +16,4 @@ PUT (amends a record) and DELETE methods added.
 Broken out repository concerns into a separate module, this will hopefully aid testing.
 
 #### Use mongodb for persistence
-Now uses mongodb for persistence (currently hosted by [link](https://mlab.com)). mongoose is used as a ORM layer above mongo.
+Now uses mongodb for persistence (currently hosted by [mLab](https://mlab.com)). mongoose is used as a ORM layer above mongo.
