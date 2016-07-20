@@ -34,7 +34,7 @@ const repository = () => {
         },
         update: (item, cb) => {
             var query = { _id: item._id};
-            Pet.findByIdAndUpdate(item._id, item, {}, (err, updated) => {
+            Pet.findByIdAndUpdate(item._id, item, { new: true }, (err, updated) => {
                 cb(updated);
             });
             
@@ -42,10 +42,10 @@ const repository = () => {
         delete: (id, cb) => {
             Pet.findByIdAndRemove(id, (err, doc) => {
                 if (err || !doc) {
-                    cb('Unable to remove, document may no longer exist');
+                    cb(false);
                 }
                 else {
-                    cb('Removed');
+                    cb(true);
                 }
             });   
         } 
